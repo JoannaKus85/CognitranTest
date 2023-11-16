@@ -3,11 +3,12 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.concurrent.TimeUnit;
 
 
 public class WebTest {
 
-    public static void main(String[] args) throws InterruptedException  {
+    public static void main(String[] args)   {
 
 
         System.setProperty("webdriver.chrome.driver" , "/Users/joanna.kus/Desktop/Chrome/chromedriver");
@@ -19,11 +20,11 @@ public class WebTest {
         //Akceptacja plików cookie
         driver.findElement(By.id("L2AGLb")).click();
 
-        Thread.sleep(2000);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         WebElement searchBox =  driver.findElement(By.name("q"));
 
         searchBox.sendKeys("Gildia");
-        Thread.sleep(1000);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         searchBox.sendKeys(Keys.ENTER);
         WebElement searchResult = driver.findElement(By.xpath("//div[@id='rso']/div/div/div/div/div/div/div/div/div/div/span/a/h3"));
